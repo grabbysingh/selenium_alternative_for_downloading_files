@@ -1,14 +1,22 @@
 import time
 import webbrowser
 
-with open('all_links.txt', 'r') as f:
+# Path to the Chrome executable
+chrome_path = '"C:\Program Files\Google\Chrome\Application\chrome.exe" %s'
+
+# Create webbrowser object
+webbrowser_obj = webbrowser.get(chrome_path)
+
+# Path to the .txt file
+pth_txt_file = "all_pdf_links.txt"
+
+with open(pth_txt_file, 'r') as f:
 	lst_links = f.readlines()
 
-for url in lst_links:
+for indx, url in enumerate(lst_links):
 
-	# Path to the Chrome executable
-	chrome_path = '"C:\Program Files\Google\Chrome\Application\chrome.exe" %s'
+	print("files done =", indx+1)
 
 	# Register the browser and open the URL
-	webbrowser.get(chrome_path).open(url)
+	webbrowser_obj.open(url)
 	time.sleep(1)
